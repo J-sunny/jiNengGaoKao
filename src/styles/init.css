@@ -1,0 +1,106 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+/*address, cite, dfn, em, var { font-style:normal; }*/
+/*code, kbd, pre, samp { font-family:couriernew, courier, monospace; }*/
+ul, ol { list-style:none; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+html,body{
+  width: 100%;
+  height: 100%;
+  background-color: #F2F2F2;
+}
+/*//滚动条凹槽的颜色，还可以设置边框属性*/
+::-webkit-scrollbar-track-piece {
+background-color:#f8f8f8;
+}
+/*//滚动条的宽度*/
+::-webkit-scrollbar {
+  width:9px;
+  height:9px;
+}
+/*//滚动条的设置*/
+::-webkit-scrollbar-thumb {
+background-color:#dddddd;
+  background-clip:padding-box;
+  min-height:28px;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color:#aaa;
+  border-radius: 5px;
+}
+#app{
+  height: 100%;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.box_r{
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+.has-gutter tr th{
+  background-color: #F5F5F5;
+}
+.el-dialog__header{
+  padding: 11px 20px;
+  background-color: #F3F4F6;
+}
+.el-dialog__headerbtn{
+  right: 20px;
+  top: 11px;
+  font-size: 22px;
+}
+.el-dialog__body{
+  padding: 30px 30px 0 30px;
+}
+.el-dialog__footer{
+}
+.el-form-item{
+  margin-bottom: 10px;
+}
+.pag {
+  padding-top: 30px;
+  text-align: center;
+}
+.ql-toolbar.ql-snow + .ql-container.ql-snow{
+  height: 178px;
+}
+.quill-editor{
+  line-height: 20px;
+}
+.zsd .el-input__inner{
+  height: 28px!important;
+}
+.app-main{
+  background-color:#F2F2F2 ;
+}
+.el-message{
+  z-index: 999999!important;
+}
+.el-carousel__arrow--left,.el-carousel__arrow--right{
+  display: none;
+}
+.el-input-group__append{
+  padding: 0;
+  height: 36px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.el-color-picker{
+  display: block;
+  position: relative;
+  top: -1px;
+}
+.el-color-picker__trigger{
+  padding: 0;
+}
