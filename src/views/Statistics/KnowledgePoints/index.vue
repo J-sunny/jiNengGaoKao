@@ -57,7 +57,6 @@
         <el-table-column
           prop="pointName"
           label="知识点名称"
-          "
         />
         <el-table-column
           prop="subjectId"
@@ -140,6 +139,7 @@ export default {
   created() {
     this.subjectId = this.$route.query.subjectId
     subjectListByKeyword({ currentPage: 1, pageSize: 99999999 }).then(data => {
+      // console.log(data)
       this.kemuList = data.data.list
     })
     this.getList()
@@ -163,6 +163,7 @@ export default {
     },
     getList() {
       statisticsListPoint({ currentPage: this.currentPage, pageSize: this.pageSize, subjectId: this.subjectId }).then(data => {
+        console.log(data)
         this.tableData = data.data.list
         this.count = data.data.count
       })

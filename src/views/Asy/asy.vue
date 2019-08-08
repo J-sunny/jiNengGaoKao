@@ -172,6 +172,9 @@
               console.log(res)
               this.dialogVisible = false
               this.$message.success('密码修改成功！')
+              this.oldPwd = ''
+              this.newPwd = ''
+              this.newPwdAgin = ''
             })
           } else {
             this.$message.warning('两次密码不一致！')

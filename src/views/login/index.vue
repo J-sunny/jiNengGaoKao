@@ -176,11 +176,9 @@
         this.$refs.loginForm.validate(valid => {
           console.log(valid)
           if (valid) {
-            this.$store.state.oldPwd = this.loginForm.password
-            console.log(this.$store.state.oldPwd)
             this.loading = true
             this.$store.dispatch('user/login', this.loginForm)
-              .then(res => {
+              .then(() => {
                 this.$router.push({
                   path: this.redirect || '/'
                 })
