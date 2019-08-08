@@ -7,8 +7,8 @@ import { getToken } from '@/utils/auth'
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // baseURL: 'http://gkxt.free.idcfengye.com/jx-project-exam', // url = base url + request url
-  baseURL: 'http://221.234.36.70:18081/jx-project-exam/', // url = base url + request url
-  // baseURL: 'http://192.168.2.110:18081/jx-project-exam/', // url = base url + request url
+  // baseURL: 'http://221.234.36.70:18081/jx-project-exam/', // url = base url + request url
+  baseURL: 'http://192.168.2.110:18081/jx-project-exam/', // url = base url + request url
 
   withCredentials: true, // send cookies when cross-domain requests
   // timeout: 5000 // request timeout
