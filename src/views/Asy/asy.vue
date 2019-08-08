@@ -10,27 +10,27 @@
             <li class="idCard">
               <div style="float: left;">
                 <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-mingcheng" />
+                  <use xlink:href="#icon-mingcheng"/>
                 </svg>
               </div>
               <div class="tkTitleDiv">
-                <span>{{ teacherInfo.userRealName }}</span>
+                <span>{{teacherInfo.userRealName}}</span>
               </div>
             </li>
             <li class="idCard">
               <div style="float: left;">
                 <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-mingcheng" />
+                  <use xlink:href="#icon-mingcheng"/>
                 </svg>
               </div>
               <div class="tkTitleDiv">
-                <span>{{ teacherInfo.teacherRole=='1'?'教师':'管理员' }}</span>
+                <span>{{teacherInfo.teacherRole=='1'?'教师':'管理员' }}</span>
               </div>
             </li>
             <li class="idCard">
               <div style="float: left;">
                 <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-mingcheng" />
+                  <use xlink:href="#icon-mingcheng"/>
                 </svg>
               </div>
               <div class="tkTitleDiv">
@@ -41,7 +41,7 @@
             <li class="idCard">
               <div style="float: left;">
                 <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-mingcheng" />
+                  <use xlink:href="#icon-mingcheng"/>
                 </svg>
               </div>
               <div class="tkTitleDiv">
@@ -52,7 +52,7 @@
           </ul>
         </div>
       </div>
-      <div class="topDiv last" />
+      <div class="topDiv last"/>
     </div>
     <ul class="buttom">
       <li v-for="(item) in getPointBySubjects" :key="item.subjectId">
@@ -77,7 +77,9 @@
               {{ val.pointName }}
             </span>
           </div>
-          <router-link v-if="item.statisticsPointErrorList.length!=0" :to="{path:'/knowledgePoints',query:{subjectId:item.subjectId}}" class="more">加载更多...</router-link>
+          <router-link v-if="item.statisticsPointErrorList.length!=0"
+                       :to="{path:'/knowledgePoints',query:{subjectId:item.subjectId}}" class="more">加载更多...
+          </router-link>
           <!-- <div class="text item" style="color: rgb(255, 190, 0);text-align: center;">
                         <span style="font-size: 55px;">906</span>题
                     </div> -->
@@ -91,13 +93,13 @@
     <el-dialog title="修改密码" :append-to-body="true" custom-class="nianji" :visible.sync="dialogVisible" width="460px">
       <el-form ref="form" label-width="80px">
         <el-form-item label="旧密码:">
-          <el-input v-model="oldPwd" size="mini" show-password />
+          <el-input v-model="oldPwd" size="mini" show-password/>
         </el-form-item>
         <el-form-item label="新密码:">
-          <el-input v-model="newPwd" size="mini" show-password />
+          <el-input v-model="newPwd" size="mini" show-password/>
         </el-form-item>
         <el-form-item label="确认密码:">
-          <el-input v-model="newPwdAgin" size="mini" show-password />
+          <el-input v-model="newPwdAgin" size="mini" show-password/>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -108,80 +110,77 @@
   </div>
 </template>
 <script>
-import {
-  knowledgePointListBySubjectId,
-  childSave,
-  knowledgePointDelete,
-  knowledgePointChildDelete
-} from '@/api/Subject'
-import {
-  getTeacherInfo,
-  getPointBySubject,
-  updatePassword
-} from '@/api/Asy'
+  import {
+    knowledgePointListBySubjectId,
+    childSave,
+    knowledgePointDelete,
+    knowledgePointChildDelete
+  } from '@/api/Subject'
+  import {
+    getTeacherInfo,
+    getPointBySubject,
+    updatePassword
+  } from '@/api/Asy'
   // import {getPointBySubject} from '@/api/Asy'
 
-export default {
-  name: 'Asy',
-  data() {
-    return {
-      questionCountData: [],
-      teacherInfo: [],
-      getPointBySubjects: [],
-      dialogVisible: false,
-      oldPwd: '',
-      newPwd: '',
-      newPwdAgin: '',
-      userPwdOld: '',
-      userType: '',
-      userId: ''
-    }
-  },
-  created() {
-    // 获取个人信息
-    getTeacherInfo({
-      currentPage: '1',
-      keyword: '滴滴滴',
-      pageSize: '2'
-    }).then(res => {
-      console.log(res)
-      this.teacherInfo = res.data.list[0]
-      this.userType = res.data.list[0].teacherRole
-      this.userPwdOld = res.data.list[0].userPwd
-      this.userId = res.data.list[0].userId
-    })
-    // 根据科目分类获取易错知识点前三名信息
-    getPointBySubject().then(res => {
-      console.log(res)
-      this.getPointBySubjects = res.data.list
-      console.log(this.getPointBySubjects)
-    })
-  },
-  methods: {
-    //  修改密码
-    updatePassword() {
-      if (this.oldPwd != this.userPwdOld) {
-        this.$message.warning('旧密码不正确！')
-      } else {
-        if (this.newPwd == this.newPwdAgin) {
-          updatePassword({
-            userId: this.userId,
-            userPwdOld: this.userPwdOld,
-            userPwdNew: this.newPwd,
-            userType: this.userType
-          }).then(res => {
-            console.log(res)
-            this.dialogVisible = false
-            this.$message.success('密码修改成功！')
-          })
+  export default {
+    name: 'Asy',
+    data() {
+      return {
+        questionCountData: [],
+        teacherInfo: [],
+        getPointBySubjects: [],
+        dialogVisible: false,
+        oldPwd: '',
+        newPwd: '',
+        newPwdAgin: '',
+        userPwdOld: '',
+        userType: '',
+        userId: ''
+      }
+    },
+    created() {
+      // 获取个人信息
+      getTeacherInfo({ userId: this.$store.state.user.introduction }).then(res => {
+        console.log(res)
+        this.teacherInfo = res.data
+        this.userType = res.data.teacherRole
+        this.userPwdOld = res.data.userPwd
+        this.userId = res.data.userId
+      })
+
+      // 根据科目分类获取易错知识点前三名信息
+      getPointBySubject().then(res => {
+        // console.log(res)
+        this.getPointBySubjects = res.data.list
+        // console.log(this.getPointBySubjects)
+      })
+    },
+    methods: {
+      //  修改密码
+      updatePassword() {
+        if (this.oldPwd != this.userPwdOld) {
+          this.$message.warning('旧密码不正确！')
         } else {
-          this.$message.warning('两次密码不一致！')
+          if (this.newPwd == this.newPwdAgin) {
+            updatePassword({
+              userId: this.userId,
+              userPwdOld: this.userPwdOld,
+              userPwdNew: this.newPwd,
+              userType: this.userType
+            }).then(res => {
+              console.log(res)
+              this.dialogVisible = false
+              this.$message.success('密码修改成功！')
+            })
+          } else {
+            this.$message.warning('两次密码不一致！')
+          }
         }
       }
-    }
 
+    }
   }
-}
 </script>
 
 <style scoped>

@@ -25,7 +25,14 @@ const mutations = {
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
+  },
+  SET_IdENTY: (state, userIdenty) => {
+    state.userIdenty = userIdenty
+  },
+  SET_ACCOUNT: (state, account) => {
+    state.account = account
   }
+
 }
 
 const actions = {
@@ -33,8 +40,9 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      console.log(resolve)
       login({ username: username.trim(), password: password }).then(response => {
+        console.log(response)
+        console.log(22)
         const { data } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
@@ -54,7 +62,7 @@ const actions = {
           reject('验证失败，请重新登录')
         }
 
-        const { roles, name, avatar, id, userName, photoUrl } = data
+        const { roles, name, avatar, id, userName, photoUrl, userIdenty, account } = data
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
           reject('没有取到权限信息，请联系管理员')
@@ -64,6 +72,8 @@ const actions = {
         commit('SET_NAME', userName)
         commit('SET_AVATAR', photoUrl)
         commit('SET_INTRODUCTION', id)
+        commit('SET_IdENTY', userIdenty)
+        commit('SET_ACCOUNT', account)
         resolve(data)
       }).catch(error => {
         reject(error)

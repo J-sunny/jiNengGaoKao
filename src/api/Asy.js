@@ -2,7 +2,7 @@ import request from '@/utils/request'
 // 获取个人信息
 export function getTeacherInfo(data) {
   return request({
-    url: '/dbinfo/teacher/list',
+    url: '/dbinfo/teacher/get',
     method: 'get',
     params: data
   })
